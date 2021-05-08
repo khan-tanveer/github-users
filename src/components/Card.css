@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card__container {
+  padding: 0.5rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.card__image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+}
+
+.card__details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
