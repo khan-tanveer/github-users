@@ -7,22 +7,37 @@ import Card from "./components/Card";
 
 function App() {
   const [names, setNames] = useState("");
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState([]);
+  const [alert, setAlert] = useState("");
+
+  console.log("alert", alert);
 
   console.log("details", details);
 
   const getData = async () => {
-    const data = await axios.get(`https://api.github.com/users/${names}`);
-    console.log("real", data.data.updated_at);
+    // const response =
+    await axios
+      .get(`https://api.github.com/users/${names}`)
+      .then((response) => {
+        console.log("real", response);
 
-    setDetails([data.data]);
-    console.log("det", setDetails);
+        setDetails([response.data]);
+        console.log("det", setDetails);
+      })
+      .catch((error) => {
+        console.log("a", error.response.data);
+        setAlert(error.response.data);
+
+        // console.log("b", error.response.status);
+        // console.log("c", error.response.headers);
+      });
   };
 
   const onsubmit = (e) => {
     e.preventDefault();
     getData();
     setNames("");
+    setAlert("");
   };
 
   // useEffect(() => {
@@ -32,6 +47,7 @@ function App() {
   return (
     <div className="App">
       <h1>hello git users</h1>
+      {alert?.message}
 
       <form>
         <input
