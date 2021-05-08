@@ -40,10 +40,6 @@ function App() {
     setAlert("");
   };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
   return (
     <div className="App">
       <h1>hello git users</h1>
